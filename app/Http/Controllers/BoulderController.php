@@ -32,7 +32,7 @@ class BoulderController extends Controller
      * Store a newly created resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function store(Request $request)
     {
@@ -45,7 +45,7 @@ class BoulderController extends Controller
         $boulder->notes = $request->input('notes');
         $boulder->save();
 
-        return $boulder;
+        return response()->json($boulder);
     }
 
     /**
