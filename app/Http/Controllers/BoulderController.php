@@ -36,13 +36,11 @@ class BoulderController extends Controller
      */
     public function store(Request $request)
     {
-        $boulder = new Boulder;
+        $data = [
+            'user_id' => 1
+        ];
 
-        $boulder->user_id = 1;
-        $boulder->boulder_grade_id = $request->input('boulder_grade_id');
-        $boulder->completed_at = now();
-        $boulder->tries = $request->input('tries');
-        $boulder->notes = $request->input('notes');
+        $boulder = Boulder::create(array_merge($data, $request->input()));
         $boulder->save();
 
         return response()->json($boulder);

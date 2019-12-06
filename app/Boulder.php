@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
  * Class Boulder
  *
  * @package App
- * @property 
+ * @property
  * @property int $id
  * @property int $user_id
  * @property int $boulder_grade_id
@@ -32,7 +32,14 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Boulder extends Model
 {
-    //
+    protected $fillable = [
+        'user_id',
+        'boulder_grade_id',
+        'completed_at',
+        'tries',
+        'notes'
+    ];
+
     protected $dates = [
         'completed_at',
     ];
