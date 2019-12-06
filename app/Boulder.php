@@ -33,4 +33,7 @@ use Illuminate\Database\Eloquent\Model;
 class Boulder extends Model
 {
     //
+    protected $dates = [
+        'completed_at',
+    ];
 }
