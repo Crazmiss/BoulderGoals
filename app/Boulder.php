@@ -17,6 +17,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $notes
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\BoulderGrade $boulderGrade
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Boulder newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Boulder newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Boulder query()
@@ -43,4 +44,9 @@ class Boulder extends Model
     protected $dates = [
         'completed_at',
     ];
+
+    public function boulderGrade()
+    {
+        return $this->belongsTo(BoulderGrade::class);
+    }
 }
