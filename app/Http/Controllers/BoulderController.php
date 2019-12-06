@@ -37,7 +37,7 @@ class BoulderController extends Controller
     public function store(Request $request)
     {
         $data = [
-            'user_id' => 1
+            'user_id' => Auth::id()
         ];
 
         $boulder = Boulder::create(array_merge($data, $request->input()));
