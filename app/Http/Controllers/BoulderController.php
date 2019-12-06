@@ -11,11 +11,24 @@ class BoulderController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function index()
     {
-        //
+        // Eager load in the boulderGrade for every boulder
+        $boulders = Auth::user()->boulders()->with(['boulderGrade'])->get();
+
+        $boulders = $boulders->map(function (Boulder $boulder) {
+            return [
+                'id' => $boulder->id,
+                'boulder_grade' => $boulder->boulderGrade,
+                'completed_at' => $boulder->completed_at,
+                'tries' => $boulder->tries,
+                'notes' => $boulder->notes,
+            ];
+        });
+
+        return response()->json($boulders);
     }
 
     /**
