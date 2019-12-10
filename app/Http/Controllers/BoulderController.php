@@ -89,10 +89,9 @@ class BoulderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $boulders = Auth::user()->boulders()->get();
+        $boulders = Auth::user()->boulders()->find($id);
 
-        $boulder = $boulders->find($id);
-        $boulder->update($request->input());
+        $boulders->update($request->input());
         $newBoulder = $boulders->find($id);
 
         return response()->json($newBoulder);
