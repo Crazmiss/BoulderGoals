@@ -61,9 +61,7 @@ class BoulderController extends Controller
      */
     public function show($id)
     {
-        $boulders = Auth::user()->boulders()->with(['boulderGrade'])->get();
-
-        $boulder = $boulders->find($id);
+        $boulder = Auth::user()->boulders()->with(['boulderGrade'])->find($id);
         $formattedBoulder = $this->transformBoulder($boulder);
 
         return response()->json($formattedBoulder);
