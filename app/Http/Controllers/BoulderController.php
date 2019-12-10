@@ -62,8 +62,10 @@ class BoulderController extends Controller
     public function show($id)
     {
         $boulders = Auth::user()->boulders()->with(['boulderGrade'])->get();
+
         $boulder = $boulders->find($id);
         $formattedBoulder = $this->transformBoulder($boulder);
+
         return response()->json($formattedBoulder);
     }
 
@@ -83,11 +85,17 @@ class BoulderController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function update(Request $request, $id)
     {
-        //
+        $boulders = Auth::user()->boulders()->with(['boulderGrade'])->get();
+
+        $boulder = $boulders->find($id);
+        $boulder->update($request->input());
+        $newBoulder = $boulders->find($id);
+
+        return response()->json($newBoulder);
     }
 
     /**
