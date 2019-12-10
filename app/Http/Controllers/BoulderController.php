@@ -19,13 +19,7 @@ class BoulderController extends Controller
         $boulders = Auth::user()->boulders()->with(['boulderGrade'])->get();
 
         $boulders = $boulders->map(function (Boulder $boulder) {
-            return [
-                'id' => $boulder->id,
-                'boulder_grade' => $boulder->boulderGrade,
-                'completed_at' => $boulder->completed_at,
-                'tries' => $boulder->tries,
-                'notes' => $boulder->notes,
-            ];
+            return $this->transformBoulder($boulder);
         });
 
         return response()->json($boulders);
@@ -102,5 +96,16 @@ class BoulderController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    private function transformBoulder(Boulder $boulder)
+    {
+        return [
+            'id' => $boulder->id,
+            'boulder_grade' => $boulder->boulderGrade,
+            'completed_at' => $boulder->completed_at,
+            'tries' => $boulder->tries,
+            'notes' => $boulder->notes,
+        ];
     }
 }
