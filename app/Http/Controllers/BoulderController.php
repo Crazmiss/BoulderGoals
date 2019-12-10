@@ -99,13 +99,12 @@ class BoulderController extends Controller
      * Remove the specified resource from storage.
      *
      * @param int $id
-     * @return \Illuminate\Http\JsonResponse
-     * @throws \Exception
+     * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $success = Auth::user()->boulders()->find($id)->delete();
-        return response()->json($success);
+        Auth::user()->boulders()->find($id)->delete();
+        return response()->noContent();
     }
 
     private function transformBoulder(Boulder $boulder)
