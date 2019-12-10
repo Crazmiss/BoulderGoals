@@ -103,7 +103,8 @@ class BoulderController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Auth::user()->boulders()->find($id)->delete();
+        return response()->noContent();
     }
 
     private function transformBoulder(Boulder $boulder)
