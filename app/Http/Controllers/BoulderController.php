@@ -93,8 +93,9 @@ class BoulderController extends Controller
 
         $boulders->update($request->input());
         $newBoulder = $boulders->find($id);
+        $transformBoulder = $this->transformBoulder($newBoulder);
 
-        return response()->json($newBoulder);
+        return response()->json($transformBoulder);
     }
 
     /**
