@@ -57,11 +57,14 @@ class BoulderController extends Controller
      * Display the specified resource.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function show($id)
     {
-        //
+        $boulders = Auth::user()->boulders()->with(['boulderGrade'])->get();
+        $boulder = $boulders->find($id);
+        $formattedBoulder = $this->transformBoulder($boulder);
+        return response()->json($formattedBoulder);
     }
 
     /**
