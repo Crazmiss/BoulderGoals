@@ -1,0 +1,14 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Laravel PHP Insights Action
+      uses: stefanzweifel/laravel-phpinsights-action@v1.0.0
+
