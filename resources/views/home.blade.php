@@ -19,7 +19,7 @@
 
                         <u>Finished boulders:</u> <br/>
                         @foreach($boulders as $boulder)
-                            @if($boulder->completed_at != null)
+                            @if($boulder->completed_at !== null)
                                 Id: {{$boulder->id}}<br/>
                                 Boulder grade:  {{ $boulder->boulderGrade->name }}<br/>
                                 Notes: {{ $boulder->notes }} <br/>
@@ -32,7 +32,7 @@
 
                         <u>Not-finishes boulders:</u> <br/>
                         @foreach($boulders as $boulder)
-                            @if($boulder->completed_at == null)
+                            @if($boulder->completed_at === null)
                                 Id: {{$boulder->id}}<br/>
                                 Boulder grade:  {{ $boulder->boulderGrade->name }}<br/>
                                 Notes: {{ $boulder->notes }} <br/>
