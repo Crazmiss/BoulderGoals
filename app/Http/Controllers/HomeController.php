@@ -24,6 +24,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home', ['boulders' => Auth::user()->boulders()->with(['boulderGrade'])->get(), 'grades' => BoulderGrade::all()]);
+        return view('home',
+            ['boulders' => Auth::user()->boulders()->with(['boulderGrade'])->get(),
+                'grades' => BoulderGrade::all()]);
     }
 }
