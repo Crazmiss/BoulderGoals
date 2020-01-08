@@ -11,7 +11,6 @@ jobs:
     runs-on: ubuntu-16.04
 
     steps:
-    - uses: BoulderGoals/master
     - name: Trigger deploy webhook
       run: curl -X GET https://forge.laravel.com/servers/66932/sites/925189/deploy/http?token=$FORGE_DEPLOY_TOKEN
       env:
