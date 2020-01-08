@@ -12,9 +12,10 @@
 */
 
 Route::get('/', function () {
-    return "hello world";
+    return View::make('welcome');
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/insertBoulder', 'InsertBoulderController@insert')->name('insertBoulder')->middleware('auth:web');
