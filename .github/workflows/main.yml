@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: 
+    branches:
       - master
 
 jobs:
@@ -13,4 +13,6 @@ jobs:
     steps:
     - uses: BoulderGoals/master
     - name: Trigger deploy webhook
-      run: curl -X GET https://forge.laravel.com/servers/66932/sites/925189/deploy/http?token=aQQoAIFBhzZFZy1cAX34ZWcSIMRuEmc5obbiwWNm
+      run: curl -X GET https://forge.laravel.com/servers/66932/sites/925189/deploy/http?token=$FORGE_DEPLOY_TOKEN
+      env:
+        FORGE_DEPLOY_TOKEN: ${{ secrets.ForgeDeployToken }}
