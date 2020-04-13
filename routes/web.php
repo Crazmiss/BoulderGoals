@@ -10,12 +10,3 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return View::make('welcome');
-});
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-Route::post('/insertBoulder', 'InsertBoulderController@insert')->name('insertBoulder')->middleware('auth:web');
